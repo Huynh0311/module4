@@ -24,7 +24,6 @@ public class EmployeeController {
 
     @ModelAttribute(name = "branches")
     public List<Branch> branches() {
-        branchService = new BranchService();
         return branchService.getAll();
     }
 
@@ -62,7 +61,7 @@ public class EmployeeController {
         try {
             String nameFile = fileImg.getOriginalFilename();
             fileImg.transferTo(new File("D:/Code-Gym/Module4/BTVNFPT/BTVNFPT/src/main/webapp/img/" + nameFile));
-            employee.setImg(nameFile);
+            employee.setImg("/img/" + nameFile);
             Branch branch = branchService.findById(idBranch);
             employee.setBranch(branch);
             employeeService.edit(employee.getIdEmployee(), employee);
