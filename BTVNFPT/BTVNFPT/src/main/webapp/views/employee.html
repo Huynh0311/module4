@@ -44,7 +44,7 @@
         <td th:text="${employee.salary}"></td>
         <td th:text="${employee.branch.nameBranch}"></td>
         <td>
-            <a th:href="@{/products/edit/{id}(id=${employee.idEmployee})}" type="button"
+            <a th:href="@{/employees/edit/{id}(id=${employee.idEmployee})}" type="button"
                class="btn btn-warning">Edit</a>
         </td>
         <td>

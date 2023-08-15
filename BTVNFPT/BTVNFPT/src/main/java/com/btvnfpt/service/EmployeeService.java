@@ -41,9 +41,31 @@ public class EmployeeService implements ICRUDService<Employee> {
         return -1;
     }
 
+    public Employee findById(int id){
+        for(Employee employee : getAll()){
+            if (employee.getIdEmployee() == id){
+                return employee;
+            }
+        }
+        return null;
+    }
+
     @Override
     public void edit(int id, Employee employee) {
-
+        String sql = "update employee set employeeCode=?, nameEmployee=?, age=?, img=?, salary=?, idBranch=? where idEmployee=?;";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, employee.getEmployeeCode());
+            preparedStatement.setString(2, employee.getNameEmployee());
+            preparedStatement.setInt(3, employee.getAge());
+            preparedStatement.setString(4, employee.getImg());
+            preparedStatement.setInt(5, employee.getSalary());
+            preparedStatement.setInt(6, employee.getBranch().getIdBranch());
+            preparedStatement.setInt(7, employee.getIdEmployee());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override

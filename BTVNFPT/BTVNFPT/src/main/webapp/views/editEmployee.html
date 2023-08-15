@@ -14,6 +14,7 @@
         </div>
         <div class="card-body">
             <form action="/employees/edit" method="post" th:object="${employee}" enctype="multipart/form-data">
+                <input type="hidden" th:field="*{idEmployee}">
                 <div class="form-group">
                     <label for="employeeCode">Employee Code</label>
                     <input type="text" th:field="*{employeeCode}" class="form-control" id="employeeCode" placeholder="Enter EmployeeCode">
@@ -28,8 +29,8 @@
                 </div>
                 <div class="form-group">
                     <label>Img</label>
-                    <input name="fileImg"  type="file" onchange="showImg(this.files)"><br>
-                    <img id="fileImg" width="300">
+                    <input name="fileImg" th:src="${employee.img}" type="file" onchange="showImg(this.files)"><br>
+                    <img id="fileImg" th:src="${employee.img}" width="300">
                 </div>
                 <div class="form-group">
                     <label for="salary">salary</label>

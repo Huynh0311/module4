@@ -50,9 +50,31 @@ public class EmployeeController {
         return "redirect:/employees";
     }
 
+    @GetMapping("/edit/{idEmployee}")
+    public ModelAndView showFormEdit(@PathVariable int idEmployee) {
+        ModelAndView modelAndView = new ModelAndView("editEmployee");
+        modelAndView.addObject("employee", employeeService.findById(idEmployee));
+        return modelAndView;
+    }
+
+    @PostMapping("/edit")
+    public String edit(@ModelAttribute Employee employee, @RequestParam MultipartFile fileImg, @RequestParam int idBranch) {
+        try {
+            String nameFile = fileImg.getOriginalFilename();
+            fileImg.transferTo(new File("D:/Code-Gym/Module4/BTVNFPT/BTVNFPT/src/main/webapp/img/" + nameFile));
+            employee.setImg(nameFile);
+            Branch branch = branchService.findById(idBranch);
+            employee.setBranch(branch);
+            employeeService.edit(employee.getIdEmployee(), employee);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return "redirect:/employees";
+    }
+
     @GetMapping("/delete/{idEmployee}")
-    public String delete(@PathVariable int id) {
-        employeeService.delete(id);
+    public String delete(@PathVariable int idEmployee) {
+        employeeService.delete(idEmployee);
         return "redirect:/employees";
     }
 
