@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form student</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <div class="card mt-4">
+        <div class="card-header font-weight-bold">
+            Student Form
+        </div>
+        <div class="card-body">
+            <form action="/employees/add" method="post" th:object="${employee}" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="employeeCode">Employee Code</label>
+                    <input type="text" th:field="*{employeeCode}" class="form-control" id="employeeCode" placeholder="Enter EmployeeCode">
+                </div>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" th:field="*{nameEmployee}" class="form-control" id="name" placeholder="Enter name">
+                </div>
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="number" th:field="*{age}" class="form-control" id="age" placeholder="Enter age">
+                </div>
+                <div class="form-group">
+                    <label>Img</label>
+                    <input name="fileImg"  type="file" onchange="showImg(this.files)"><br>
+                    <img id="fileImg" width="300">
+                </div>
+                <div class="form-group">
+                    <label for="salary">salary</label>
+                    <input type="number" th:field="*{salary}" class="form-control" id="salary" placeholder="Enter salary">
+                </div>
+                <div class="form-group">
+                    <label for="branch">branch</label>
+                    <select class="custom-select" id="branch" name="idBranch" placeholder="Select class">
+                        <!-- lấy danh sách class và hiển thị -> foreach -->
+                        <!-- arr.foreach(item => {
+                            <option :selected="{item.id = detail.id ? true : false}" :value="{item.id}">{item.className}</option>
+                        }) -->
+                        <option th:each="branch : ${branches}" th:text="${branch.nameBranch}" th:value="${branch.idBranch}"></option>
+                    </select>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <a href="/employees" class="btn btn-outline-primary">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    function showImg(file) {
+        let img = document.getElementById("fileImg");
+        img.src = URL.createObjectURL(file[0]);
+    }
+</script>
