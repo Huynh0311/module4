@@ -1,0 +1,30 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<form action="/news/add" method="post" th:object="${news}">
+    <input th:field="*{title}" placeholder="title"><br><br>
+    <input th:field="*{content}" placeholder="content"><br><br>
+    <input th:field="*{img}" onchange="checkImage();" placeholder="path img"><br><br>
+    <div>
+        <img src="" alt="" id="image" style="width: 200px" height="200px">
+    </div>
+    <select name="idCategory">
+        <option th:each="c : ${categories}" th:value="${c.idCategory}" th:text="${c.name}"></option>
+    </select>
+    <button type="submit">Add</button>
+</form>
+</body>
+</html>
+<script>
+    let checkImage = function () {
+        document.getElementById("image").src = document.getElementById("link").value;
+    }
+</script>

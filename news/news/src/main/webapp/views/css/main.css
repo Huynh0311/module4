@@ -28,9 +28,9 @@
  *  01. webfonts and iconfonts - (_document-setup.scss)
  *
  * ------------------------------------------------------------------- */
-@import url("font-awesome/css/font-awesome.min.css");
-@import url("micons/micons.css");
-@import url("fonts.css");
+@import url("./font-awesome/css/font-awesome.min.css");
+@import url("./micons/micons.css");
+@import url("../css/fonts.css");
 
 
 /* ===================================================================
@@ -1347,11 +1347,11 @@ input::-moz-focus-inner {
 }
 
 #featured-post-slider .flex-direction-nav li a.flex-prev {
-	background-image: url(../images/arrow-left.png);
+	background-image: url(arrow-left.png);
 }
 
 #featured-post-slider .flex-direction-nav li a.flex-next {
-	background-image: url(../images/arrow-right.png);
+	background-image: url(arrow-right.png);
 }
 
 #featured-post-slider .flex-direction-nav li a:hover {
@@ -1554,7 +1554,7 @@ input::-moz-focus-inner {
  * ------------------------------------------------------------------- */
 header {
 	width: 100%;
-	background: #DBDBDB url(../images/escheresque_@2X.png) repeat;
+	background: #DBDBDB url(escheresque_@2X.png) repeat;
 	background-size: 46px 29px;
 	height: 130px;
 	border-bottom: 1px solid #E5E5E5;
@@ -1688,8 +1688,8 @@ header .logo a {
  * ------------------------------------------------------------------- */
 #main-nav-wrap {
 	display: table;
-	float: right;
-	padding-right: 85px;
+	float: left;
+	padding-left: 125px;
 	font-family: "montserrat-regular", sans-serif;
 	font-size: 15px;
 	height: 78px;
@@ -3085,25 +3085,25 @@ footer ul li {
 
 .format-audio .mejs-controls .mejs-button button,
 .format-audio .no-svg .mejs-controls .mejs-button button {
-	background: transparent url("../images/mejs/play.png") no-repeat center;
+	background: transparent url("play.png") no-repeat center;
 	background-size: 14px;
 }
 
 .format-audio .mejs-controls .mejs-pause button,
 .format-audio .no-svg .mejs-controls .mejs-pause button {
-	background: transparent url("../images/mejs/pause.png") no-repeat center;
+	background: transparent url("pause.png") no-repeat center;
 	background-size: 14px;
 }
 
 .format-audio .mejs-controls .mejs-mute button,
 .format-audio .no-svg .mejs-controls .mejs-mute button {
-	background: transparent url("../images/mejs/speaker-on.png") no-repeat center;
+	background: transparent url("speaker-on.png") no-repeat center;
 	background-size: 16px;
 }
 
 .format-audio .mejs-controls .mejs-unmute button,
 .format-audio .no-svg .mejs-controls .mejs-unmute button {
-	background: transparent url("../images/mejs/speaker-mute.png") no-repeat center;
+	background: transparent url("speaker-mute.png") no-repeat center;
 	background-size: 16px;
 }
 

@@ -1,11 +1,11 @@
-package com.demo_jpa.config;
+package com.news.config;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class WebInit extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class[]{webConfig.class};
+        return new Class[]{WebConfig.class};
     }
 
     @Override
