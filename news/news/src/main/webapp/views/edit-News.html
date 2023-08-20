@@ -10,26 +10,25 @@
 </head>
 <body style="display: flex; justify-content: center; align-items: center;flex-direction: column;">
 <div>
-    <h1>ADD NEWS</h1><br>
+    <h1>EDIT NEWS</h1><br>
 </div>
-<form action="/news/add" method="post" th:object="${news}"
+<form action="/news/edit" method="post" th:object="${news}"
       style="display: flex; justify-content: center; align-items: center;flex-direction: column;">
-    <textarea th:field="*{title}" placeholder="title" rows="7" cols="50"></textarea><br><br>
+    <input th:field="*{idNews}" type="hidden">
+    <textarea th:field="*{title}" placeholder="title" rows="5" cols="50"></textarea><br><br>
     <textarea th:field="*{content}" placeholder="content" rows="7" cols="50"></textarea><br><br>
     <textarea th:field="*{img}" name="img" id="link" onchange="checkImage();" placeholder="path img" rows="5"
               cols="50"></textarea><br><br>
-
     <div>
         <img src="" alt="" id="image" style="width: 200px" height="200px">
     </div>
     <br>
-
     <select name="idCategory" style="width: 145px; height: 45px; text-align: center;">
         <option th:each="c : ${categories}" th:value="${c.idCategory}" th:text="${c.name}"></option>
     </select><br>
     <br>
     <div>
-        <button type="submit" style="width: 115px;height: 38px;">Add</button>
+        <button type="submit" style="width: 115px;height: 38px;">EDIT</button>
     </div>
 </form>
 </body>

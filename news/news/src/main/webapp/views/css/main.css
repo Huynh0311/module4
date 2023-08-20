@@ -2254,7 +2254,7 @@ header .logo a {
 
 #content-wrap .primary-content img {
 	max-width: 910px;
-	margin: 3rem 0 3rem -6rem;
+	/*margin: 3rem 0 3rem -6rem;*/
 }
 
 #content-wrap .primary-content img.pull-right {

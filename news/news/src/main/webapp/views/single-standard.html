@@ -1,37 +1,41 @@
+<html xmlns:th="http://www.thymeleaf.org">
 <!DOCTYPE html>
-<!--[if IE 8 ]><html class="no-js oldie ie8" lang="en"> <![endif]-->
-<!--[if IE 9 ]><html class="no-js oldie ie9" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--><html class="no-js" lang="en"> <!--<![endif]-->
+<!--[if IE 8 ]>
+<html class="no-js oldie ie8" lang="en"> <![endif]-->
+<!--[if IE 9 ]>
+<html class="no-js oldie ie9" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js" lang="en"> <!--<![endif]-->
 <head>
 
-   <!--- basic page needs
-   ================================================== -->
-   <meta charset="utf-8">
-	<title>Standard Format Post - Abstract</title>
-	<meta name="description" content="">  
+	<!--- basic page needs
+    ================================================== -->
+	<meta charset="utf-8">
+	<title>Abstract</title>
+	<meta name="description" content="">
 	<meta name="author" content="">
 
-   <!-- mobile specific metas
-   ================================================== -->
+	<!-- mobile specific metas
+    ================================================== -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
- 	<!-- CSS
-   ================================================== -->
-   <link rel="stylesheet" href="css/base.css">
-   <link rel="stylesheet" href="css/vendor.css">  
-   <link rel="stylesheet" href="css/main.css">
-        
+	<!-- CSS
+  ================================================== -->
+	<link rel="stylesheet" th:href="@{/css/base.css}">
+	<link rel="stylesheet" th:href="@{/css/vendor.css}">
+	<link rel="stylesheet" th:href="@{/css/main.css}">
 
-   <!-- script
-   ================================================== -->
-	<script src="js/modernizr.js"></script>
-	<script src="js/pace.min.js"></script>
 
-   <!-- favicons
-	================================================== -->
-	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-	<link rel="icon" href="favicon.ico" type="image/x-icon">
+	<!-- script
+    ================================================== -->
+	<script th:src="@{/js/modernizr.js}"></script>
+	<script th:src="@{/js/pace.min.js}"></script>
 
+	<!-- favicons
+     ================================================== -->
+	<link rel="shortcut icon" href="favicon.ico" type="./image/x-icon">
+	<link rel="icon" href="favicon.ico" type="./image/x-icon">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 
 <body id="top">
@@ -45,12 +49,12 @@
    	<div class="row header-content">
 
    		<div class="logo">
-	         <a href="index.html">Author</a>
+	         <a href="http://localhost:8080/news">Author</a>
 	      </div>
 
 	   	<nav id="main-nav-wrap">
 				<ul class="main-navigation sf-menu">
-					<li><a href="index.html" title="">Home</a></li>									
+					<li><a href="http://localhost:8080/news" title="">Home</a></li>
 					<li class="has-children">
 						<a href="category.html" title="">Categories</a>
 						<ul class="sub-menu">
@@ -63,7 +67,7 @@
 			         </ul>
 					</li>
 					<li class="has-children current">
-						<a href="single-standard.html" title="">Blog</a>
+						<a href="#" title="">Blog</a>
 						<ul class="sub-menu">
 			            <li><a href="single-video.html">Video Post</a></li>
 			            <li><a href="single-audio.html">Audio Post</a></li>
@@ -109,69 +113,29 @@
 
    			<article class="format-standard">  
 
-   				<div class="content-media">
-						<div class="post-thumb">
-							<img src="images/thumbs/single/single-01.jpg"> 
-						</div>  
-					</div>
+<!--   				<div class="content-media">-->
+<!--						<div class="post-thumb">-->
+<!--							<img src="images/thumbs/single/single-01.jpg"> -->
+<!--						</div>  -->
+<!--					</div>-->
 
 					<div class="primary-content">
 
-						<h1 class="page-title">Hey, This Is A Standard Format Post.</h1>	
+						<h1 class="page-title" th:text="${newses.title}"></h1>
 
 						<ul class="entry-meta">
-							<li class="date">September 06, 2016</li>						
-							<li class="cat"><a href="">Wordpress</a><a href="">Design</a></li>				
-						</ul>						
-
-						<p class="lead">Duis ex ad cupidatat tempor Excepteur cillum cupidatat fugiat nostrud cupidatat dolor sunt sint sit nisi est eu exercitation incididunt adipisicing veniam velit id fugiat enim mollit amet anim veniam dolor dolor irure velit commodo cillum sit nulla ullamco magna amet magna cupidatat qui labore cillum sit in tempor veniam consequat non laborum adipisicing aliqua ea nisi sint.</p> 
-
-						<p>Duis ex ad cupidatat tempor Excepteur cillum cupidatat fugiat nostrud cupidatat dolor sunt sint sit nisi est eu exercitation incididunt adipisicing veniam velit id fugiat enim mollit amet anim veniam dolor dolor irure velit commodo cillum sit nulla ullamco magna amet magna cupidatat qui labore cillum sit in tempor veniam consequat non laborum adipisicing aliqua ea nisi sint ut quis proident ullamco ut dolore culpa occaecat ut laboris in sit minim cupidatat ut dolor voluptate enim veniam consequat occaecat fugiat in adipisicing in amet Ut nulla nisi non ut enim aliqua laborum mollit quis nostrud sed sed.
-						</p>
-
-						<p><img src="images/shutterbug.jpg" alt=""></p>
-
-						<h2>Large Heading</h2>
-
-						<p>Harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus <a href="http://#">omnis voluptas assumenda est</a> id quod maxime placeat facere possimus, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et.</p>
-
-						<blockquote><p>This is a simple example of a styled blockquote. A blockquote tag typically specifies a section that is quoted from another source of some sort, or highlighting text in your post.</p></blockquote>
-
-						<p>Odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nulla vitae elit libero, a pharetra augue laboris in sit minim cupidatat ut dolor voluptate enim veniam consequat occaecat fugiat in adipisicing in amet Ut nulla nisi non ut enim aliqua laborum mollit quis nostrud sed sed..</p>
-
-						<h3>Smaller Heading</h3>
-
-						<p>Quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
-
-						<p>Quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
-
-<pre><code>
-code {
-   font-size: 1.4rem;
-   margin: 0 .2rem;
-   padding: .2rem .6rem;
-   white-space: nowrap;
-   background: #F1F1F1;
-   border: 1px solid #E1E1E1;	
-   border-radius: 3px;
-}
-</code></pre>
-
-						<p>Odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa.</p>
-
-						<ul>
-							<li>Donec nulla non metus auctor fringilla.
-								<ul>
-									<li>Lorem ipsum dolor sit amet.</li>
-									<li>Lorem ipsum dolor sit amet.</li>
-									<li>Lorem ipsum dolor sit amet.</li>
-								</ul>
+<!--							<li class="date">September 06, 2016</li>						-->
+							<li class="cat">
+								<a href="" th:text="${newses.category.name}"></a>
+<!--								<a href="">Design</a>-->
 							</li>
-							<li>Donec nulla non metus auctor fringilla.</li>
-							<li>Donec nulla non metus auctor fringilla.</li>
 						</ul>
 
-						<p>Odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nulla vitae elit libero, a pharetra augue laboris in sit minim cupidatat ut dolor voluptate enim veniam consequat occaecat fugiat in adipisicing in amet Ut nulla nisi non ut enim aliqua laborum mollit quis nostrud sed sed..</p>
+						<p><img th:src="${newses.img}" alt=""></p>
+
+<!--						<h2>Large Heading</h2>-->
+
+						<p th:text="${newses.content}"></p>
 
 						<p class="tags">
 		  			     	<span>Tagged in :</span>
@@ -500,13 +464,14 @@ code {
 
    <div id="preloader"> 
     	<div id="loader"></div>
-   </div> 
+   </div>
 
-   <!-- Java Script
-   ================================================== --> 
-   <script src="js/jquery-2.1.3.min.js"></script>
-   <script src="js/plugins.js"></script>
-   <script src="js/main.js"></script>
+	<!-- Java Script
+    ================================================== -->
+	<script th:src="@{/js/jquery-2.1.3.min.js}"></script>
+	<script th:src="@{/js/plugins.js}"></script>
+	<script th:src="@{/js/jquery.appear.js}"></script>
+	<script th:src="@{/js/main.js}"></script>
 
 </body>
 

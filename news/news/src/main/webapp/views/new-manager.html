@@ -44,7 +44,7 @@
         </td>
         <td><img th:src="${news.img}" alt="" width="200" height="200"></td>
         <td>
-            <a type="button" th:href="@{news/edit/{id}(id=${news.getIdNews()})}" class="btn btn-warning">Edit</a>
+            <a type="button" th:href="@{/news/edit/{id}(id=${news.getIdNews()})}" class="btn btn-warning">Edit</a>
         </td>
         <td>
             <!-- Button trigger modal -->

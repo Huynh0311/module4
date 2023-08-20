@@ -28,6 +28,12 @@ public class NewsController {
         modelAndView.addObject("newses", iNewsService.getAll());
         return modelAndView;
     }
+    @GetMapping("/blog/{idNews}")
+    public ModelAndView showBlog(@PathVariable int idNews){
+        ModelAndView modelAndView = new ModelAndView("single-standard");
+        modelAndView.addObject("newses", iNewsService.findById(idNews));
+        return modelAndView;
+    }
     @GetMapping("/admin")
     public ModelAndView getAllManager(){
         ModelAndView modelAndView = new ModelAndView("new-manager");
@@ -43,11 +49,22 @@ public class NewsController {
     @PostMapping("/add")
     public String AddNews(@ModelAttribute News news, @RequestParam int idCategory){
         iNewsService.save(news, idCategory);
-        return "redirect:/news";
+        return "redirect:/news/admin";
     }
     @GetMapping("/delete/{idNews}")
     public String delete(@PathVariable int idNews){
         iNewsService.delete(idNews);
-        return "redirect:/news";
+        return "redirect:/news/admin";
+    }
+    @GetMapping("/edit/{idNews}")
+    public ModelAndView showFormEdit(@PathVariable int idNews){
+        ModelAndView modelAndView = new ModelAndView("edit-News");
+        modelAndView.addObject("news", iNewsService.findById(idNews));
+        return modelAndView;
+    }
+    @PostMapping("/edit")
+    public String showFormEdit(@ModelAttribute News news, @RequestParam int idCategory){
+        iNewsService.save(news, idCategory);
+        return "redirect:/news/admin";
     }
 }

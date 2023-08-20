@@ -26,12 +26,6 @@ public class News {
         this.img = img;
         this.category = category;
     }
-    public News(String title, String content, String img, Category category) {
-        this.title = title;
-        this.content = content;
-        this.img = img;
-        this.category = category;
-    }
 
     public int getIdNews() {
         return idNews;
