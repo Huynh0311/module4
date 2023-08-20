@@ -64,7 +64,6 @@ public class ProductController {
         return "redirect:/products";
 
     }
-
     @GetMapping("/search")
     public ModelAndView getAllById(@RequestParam String nameSearch, @RequestParam(defaultValue = "0")int page){
         ModelAndView modelAndView = new ModelAndView("product");
