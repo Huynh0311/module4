@@ -8,5 +8,7 @@ import java.util.List;
 
 public interface INewsService extends IService<News>{
     void save(News news, int idCategory);
-    Page<News> getAll(Pageable pageable, String nameSearch);
+    Page<News> getAll(Pageable pageable);
+    Page<News> getAllByTitle(String nameSearch,Pageable pageable);
+    List<News> getAllByCategoryId(int idCategory);
 }

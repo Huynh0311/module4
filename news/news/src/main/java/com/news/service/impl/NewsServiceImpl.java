@@ -58,7 +58,18 @@ public class NewsServiceImpl implements INewsService {
     }
 
     @Override
-    public Page<News> getAll(Pageable pageable, String nameSearch) {
-        return null;
+    public Page<News> getAll(Pageable pageable) {
+        return iNewsRepo.findAll(pageable);
     }
+
+    @Override
+    public Page<News> getAllByTitle(String nameSearch, Pageable pageable) {
+        return iNewsRepo.getAllByTitle(nameSearch, pageable);
+    }
+
+    @Override
+    public List<News> getAllByCategoryId(int idCategory) {
+        return iNewsRepo.findAllByCategoryIdCategory(idCategory);
+    }
+
 }

@@ -1,6 +1,7 @@
 package com.news.service.impl;
 
 import com.news.model.Category;
+import com.news.model.News;
 import com.news.repository.ICategoryRepo;
 import com.news.repository.INewsRepo;
 import com.news.service.ICategoryService;
@@ -8,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class CategoryServiceImpl implements ICategoryService {
     @Autowired
@@ -31,7 +34,12 @@ public class CategoryServiceImpl implements ICategoryService {
 
     @Override
     public Category findById(int id) {
-        return null;
+        Optional<Category> optionalCategory = iCategoryRepo.findById(id);
+        if (optionalCategory.isPresent()) {
+            return optionalCategory.get();
+        } else {
+            return new Category();
+        }
     }
 
     @Override
