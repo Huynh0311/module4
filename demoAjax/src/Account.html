@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+          integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+            crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+</head>
+<body>
+<div>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        Create
+    </button>
+
+    <!-- Modal ADD -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="">ADD</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <label> Nhập username</label>
+                        <input type="text" id="username" placeholder="nhập username">
+                    </div>
+                    <div>
+                        <label> Nhập password</label>
+                        <input type="text" id="password" placeholder="nhập password">
+                    </div>
+                    <div>
+                        <label> Nhập idRole</label>
+                        <input type="text" id="idRole" placeholder="nhập idRoleE">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="add()" data-dismiss="modal">Save changes
+                    </button>
+                </div>
+                "
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <input type="text" name="" id="nameSearch">
+    <button onclick="search()">search</button>
+</div>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">id</th>
+        <th scope="col">username</th>
+        <th scope="col">password</th>
+        <th scope="col">Role</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+    </tr>
+    </thead>
+    <tbody id="show">
+    </tbody>
+</table>
+<!-- Modal -->
+<div class="modal fade" id="ModalEdit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">ADD</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <label> Nhập ID</label>
+                    <input type="text" id="idE" placeholder="nhập id">
+                </div>
+                <div>
+                    <label> Nhập username</label>
+                    <input type="text" id="usernameE" placeholder="nhập username">
+                </div>
+                <div>
+                    <label> Nhập password</label>
+                    <input type="text" id="passwordE" placeholder="nhập password">
+                </div>
+                <div>
+                    <label> Nhập Role</label>
+                    <input type="text" id="roleE" placeholder="nhập Role">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="edit()" data-dismiss="modal">Save changes
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script src="account.js"></script>
