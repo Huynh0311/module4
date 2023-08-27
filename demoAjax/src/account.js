@@ -1,4 +1,4 @@
-function getAll(){
+function getAll() {
     // Tạo ra 1 request.
     $.ajax({
         type: "GET",
@@ -15,8 +15,10 @@ function getAll(){
         }
     });
 }
+
 getAll();
-function show(arr){
+
+function show(arr) {
     let str = "";
     for (const a of arr) {
         str += ` <tr>
@@ -25,17 +27,18 @@ function show(arr){
                 <td>${a.password}</td>
                 <td>${a.role.name}</td>
                 <td><button type="button" class="btn btn-warning" data-toggle="modal" onclick="showEdit(${a.id})" data-target="#ModalEdit">Edit</button></td>
-                <td><button type="button" class="btn btn-danger" onclick="deleteA(${a.id})">Delete</button></td>
+                <td><button type="button" class="btn btn-danger" data-toggle="modal" onclick="getId(${a.id})" data-target="#ModalDelete">Delete</button></td>
              </tr>
     `
     }
     document.getElementById("show").innerHTML = str;
 }
-function add(){
+
+function add() {
     let username = document.getElementById("username").value;
     let password = document.getElementById("password").value;
     let idRole = document.getElementById("idRole").value;
-    let account = {username,password,role: {id:idRole}};
+    let account = {username, password, role: {id: idRole}};
 
     $.ajax({
         type: "Post",
@@ -53,14 +56,15 @@ function add(){
         }
     });
 }
-function showEdit(idA){
+
+function showEdit(idA) {
     // Tạo ra 1 request.
     $.ajax({
         type: "GET",
         headers: {
             'Accept': 'application/json',
         },
-        url: "http://localhost:8080/accounts/edit/"+idA,
+        url: "http://localhost:8080/accounts/edit/" + idA,
         success: function (data) {
             document.getElementById("idE").value = data.id;
             document.getElementById("usernameE").value = data.username;
@@ -73,12 +77,13 @@ function showEdit(idA){
         }
     });
 }
-function edit(){
+
+function edit() {
     let id = document.getElementById("idE").value;
     let username = document.getElementById("usernameE").value;
     let password = document.getElementById("passwordE").value;
     let idRole = document.getElementById("roleE").value;
-    let account = {id, username, password,role:{id: idRole}};
+    let account = {id, username, password, role: {id: idRole}};
 
     $.ajax({
         type: "Post",
@@ -96,10 +101,15 @@ function edit(){
         }
     });
 }
-function deleteA(idA){
+
+let deleteId;
+function getId(idA){
+    deleteId = idA;
+}
+function deleteA() {
     $.ajax({
         type: "GET",
-        url: "http://localhost:8080/accounts/delete/"+idA,
+        url: "http://localhost:8080/accounts/delete/" + deleteId,
         success: function (data) {
             getAll();
         },
@@ -109,32 +119,40 @@ function deleteA(idA){
         }
     });
 }
-function search(){
-    let name = document.getElementById("nameSearch").value;
-    // $.ajax({
-    //     type: "GET",
-    //     headers: {
-    //         "Content-Type": "application/json",
-    //     },
-    //     url: "http://localhost:8080/accounts/" + name,
-    //     success: function (data) {
-    //         show(data);
-    //     },
-    //     error: function (err) {
-    //         console.log(err)
-    //         // lỗi
-    //     }
-    // });
-    var settings = {
-        "url": "http://localhost:8080/accounts/search/"+name,
-        "method": "GET",
-        "headers": {
-            "Content-Type": "application/json"
-        },
-    };
 
-    $.ajax(settings).done(function (response) {
-        show(response);
+function search() {
+    let name = document.getElementById("nameSearch").value;
+    $.ajax({
+        type: "GET",
+        headers: {
+            "Accept": "application/json",
+        },
+        url: "http://localhost:8080/accounts/search?username=" + name,
+        success: function (data) {
+            show(data);
+        },
+        error: function (err) {
+            console.log(err)
+            // lỗi
+        }
     });
+    // var settings = {
+    //     "url": "http://localhost:8080/accounts/search/" + name,
+    //     "method": "GET",
+    //     "headers": {
+    //         "Content-Type": "application/json"
+    //     },
+    // };
+    //
+    // $.ajax(settings).done(function (response) {
+    //     show(response);
+    // })
+    // $.ajax(settings).error(function (err) {
+    //     console.log(err)
+    //     // lỗi
+    // })
+    // ;
 }
+
+
 

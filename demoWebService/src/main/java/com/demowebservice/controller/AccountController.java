@@ -35,8 +35,17 @@ public class AccountController {
         accountService.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-    @GetMapping("/search/{name}")
-    public List<Account> getAllByName(@PathVariable String name){
-        return accountService.getAllByName(name);
+    @GetMapping("/search")
+    public List<Account> getAllByName(String username){
+        return accountService.getAllByName(username);
+    }
+
+//    @GetMapping("/login")
+//    public Account findByUsernamePassWord(@RequestBody Account account){
+//        return accountService.findByUsernamePasswordHQL(account.getUsername(), account.getPassword());
+//    }
+    @GetMapping("/login")
+    public Account findByUsernamePassWord(@RequestParam String username,@RequestParam String password){
+        return accountService.findByUsernamePasswordHQL(username, password);
     }
 }

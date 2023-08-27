@@ -29,4 +29,7 @@ public class AccountService {
     public List<Account> getAllByName(String name){
         return accountRepo.getAllByNameHQL(name);
     }
+    public Account findByUsernamePasswordHQL(String name, String password){
+        return accountRepo.findByUsernamePasswordHQL(name, password);
+    }
 }
