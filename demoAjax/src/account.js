@@ -1,9 +1,12 @@
+let token = localStorage.getItem('token');
+
 function getAll() {
     // Tạo ra 1 request.
     $.ajax({
         type: "GET",
         headers: {
             'Accept': 'application/json',
+            "Authorization": "Bearer " + token
         },
         url: "http://localhost:8080/accounts",
         success: function (data) {
@@ -25,11 +28,15 @@ function show(arr) {
                 <td>${a.id}</td>
                 <td>${a.username}</td>
                 <td>${a.password}</td>
-                <td>${a.role.name}</td>
+                <td>`
+        for (const r of a.roles) {
+            if (a.roles.indexOf(r) ===( a.roles.length - 1)) str +=`${r.name}`;
+            else str +=`${r.name}, `;
+        }
+        str += `</td>
                 <td><button type="button" class="btn btn-warning" data-toggle="modal" onclick="showEdit(${a.id})" data-target="#ModalEdit">Edit</button></td>
                 <td><button type="button" class="btn btn-danger" data-toggle="modal" onclick="getId(${a.id})" data-target="#ModalDelete">Delete</button></td>
-             </tr>
-    `
+             </tr> `;
     }
     document.getElementById("show").innerHTML = str;
 }
@@ -44,6 +51,7 @@ function add() {
         type: "Post",
         headers: {
             'Content-Type': 'application/json',
+            "Authorization": "Bearer " + token
         },
         url: "http://localhost:8080/accounts",
         data: JSON.stringify(account),
@@ -63,6 +71,7 @@ function showEdit(idA) {
         type: "GET",
         headers: {
             'Accept': 'application/json',
+            "Authorization": "Bearer " + token
         },
         url: "http://localhost:8080/accounts/edit/" + idA,
         success: function (data) {
@@ -89,6 +98,7 @@ function edit() {
         type: "Post",
         headers: {
             'Content-Type': 'application/json',
+            "Authorization": "Bearer " + token
         },
         url: "http://localhost:8080/accounts",
         data: JSON.stringify(account),
@@ -103,12 +113,17 @@ function edit() {
 }
 
 let deleteId;
-function getId(idA){
+
+function getId(idA) {
     deleteId = idA;
 }
+
 function deleteA() {
     $.ajax({
         type: "GET",
+        headers: {
+            "Authorization": "Bearer " + token
+        },
         url: "http://localhost:8080/accounts/delete/" + deleteId,
         success: function (data) {
             getAll();
@@ -126,6 +141,7 @@ function search() {
         type: "GET",
         headers: {
             "Accept": "application/json",
+            "Authorization": "Bearer " + token
         },
         url: "http://localhost:8080/accounts/search?username=" + name,
         success: function (data) {

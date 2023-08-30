@@ -1,4 +1,4 @@
-package com.demowebservice.config;
+package com.demowebservice.security;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

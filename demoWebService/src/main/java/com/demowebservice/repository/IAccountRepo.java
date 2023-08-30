@@ -14,4 +14,5 @@ public interface IAccountRepo extends CrudRepository<Account, Integer> {
     List<Account> getAllByNameHQL(@Param("name") String name);
     @Query(nativeQuery = true, value = "select * from Account where username = :name and password = :password")
     Account findByUsernamePasswordHQL(@Param("name") String name, @Param("password") String password);
+    Account findByUsername(String username);
 }

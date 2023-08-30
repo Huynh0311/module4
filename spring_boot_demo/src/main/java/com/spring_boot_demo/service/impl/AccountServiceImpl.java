@@ -1,20 +1,18 @@
-package com.demowebservice.service;
+package com.spring_boot_demo.service.impl;
 
-import com.demowebservice.model.Account;
-import com.demowebservice.model.Role;
-import com.demowebservice.repository.IAccountRepo;
+import com.spring_boot_demo.model.Account;
+import com.spring_boot_demo.repository.IAccountRepo;
+import com.spring_boot_demo.service.IAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class AccountService implements UserDetailsService {
+public class AccountServiceImpl implements IAccountService {
     @Autowired
     IAccountRepo accountRepo;
     public List<Account> getAll(){
@@ -38,13 +36,14 @@ public class AccountService implements UserDetailsService {
     public Account findByUsernamePasswordHQL(String name, String password){
         return accountRepo.findByUsernamePasswordHQL(name, password);
     }
-
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Account account = accountRepo.findByUsername(username);
-        List<Role> roles = new ArrayList<>();
-        roles.add(account.getRole());
-        User user = new User(account.getUsername(), account.getPassword(), roles);
-        return user;
+        return new User(account.getUsername(), account.getPassword(), account.getRoles());
+    }
+
+    @Override
+    public Account findByUsername(String username) {
+        return accountRepo.findByUsername(username);
     }
 }
